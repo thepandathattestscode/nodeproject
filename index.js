@@ -1,20 +1,20 @@
-// Require http module
-var http = require("http");  
+const PORT = process.env.PORT || 5000
+const express = require('express')
+let http = require('http');
+let fs = require('fs');
 
-const PORT = process.env.PORT || 3000
-  
-// Create server
-http.createServer(function (req, res) {  
-   
-    // Send the HTTP header   
-    // HTTP Status: 200 : OK  
-    // Content Type: text/plain  
-    res.writeHead(200, {'Content-Type': 'text/plain'});  
-     
-    // Send the response body as "This is the example
-    // of node.js web based application"  
-   res.end('This is the example of node.js web-based application \n');
-  
-// Console will display the message  
-}).listen(PORT, 
+const app = express()
+
+app.get('', (req, res) => {
+    res.sendFile(__dirname + "/home.html");
+})
+
+app.get('/about', (req, res) => {
+    res.sendFile(__dirname + "/about.html");
+})
+
+app.listen(3000, () => {
+    console.log('Server is up and running on PORT 3000.')
+})
+app.listen(PORT, 
     ()=>console.log('Server running at:' + PORT));
