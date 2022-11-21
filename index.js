@@ -1,5 +1,7 @@
 // Require http module
 var http = require("http");  
+
+const PORT = process.env.PORT || 3000
   
 // Create server
 http.createServer(function (req, res) {  
@@ -14,5 +16,5 @@ http.createServer(function (req, res) {  
    res.end('This is the example of node.js web-based application \n');
   
 // Console will display the message  
-}).listen(5000, 
-    ()=>console.log('Server running at http://127.0.0.1:5000/'));
+}).listen(PORT, 
+    ()=>console.log('Server running at:' + PORT));
